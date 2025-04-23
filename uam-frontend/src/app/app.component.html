@@ -1,0 +1,102 @@
+<br>
+<h1 style="text-align: center; color: #003366"><strong>Registro de Estudiantes y Gestión de Calificaciones</strong></h1><br>
+<div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; padding: 20px;">
+  <mat-card *ngFor="let item of studentsWithGrades" style="width: 320px; border: 1px solid #3f51b5;">
+    <mat-card-header>
+      <mat-card-title style="font-size: 19px; font-weight: bold; color: #2E7D32;">
+        <h4 style="margin-top: 10px;"><strong>Estudiante</strong></h4>
+      </mat-card-title>
+    </mat-card-header>
+    
+    <div style="padding: 0 16px; color: black; font-weight: normal;">
+      <p><strong>Matrícula:</strong> {{ item.student.matricula }}
+      <p><strong>Nombre:</strong> {{ item.student.nombre }} {{item.student.apellidoP}} {{item.student.apellidoM}}</p>
+    </div>
+
+    <mat-card-content style="color: black;">
+      <p><strong>Correo electrónico:</strong> {{ item.student.email }}</p>
+      <p><strong>Licenciatura:</strong> {{ item.student.licenciatura }}</p>
+
+      <h4 style="margin-top: 10px; padding: 0 16px; font-weight: bold; color: #8B0000;"><strong>Calificaciones</strong></h4>
+      <ul>
+        <li *ngFor="let grade of item.grades">
+          <p><strong>UEA:</strong> {{ grade.materia }}</p>
+          <p><strong>Calificación:</strong> {{ grade.calificacion }}</p>
+          <p><strong>Nota:</strong> {{ grade.nota }}</p>
+          <p><strong>Profesor:</strong> {{ grade.profesor }}</p>
+          <p><strong>Trimestre:</strong> {{ grade.trimestre }}</p>
+        </li>
+      </ul>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-accordion>
+    <br><br><h2 style="text-align: center; color: #084408"><strong>Estudiantes </strong></h2>
+    <mat-expansion-panel *ngFor="let student of studentsWithGrades">
+      <h3 style="text-align: center; color: #003366"><strong>Datos adicionales del estudiante</strong></h3><br>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{ student.student.nombre }} {{ student.student.apellidoP }} {{ student.student.apellidoM }}
+        </mat-panel-title>
+        <mat-panel-description>
+          Matrícula: {{ student.student.matricula }}
+        </mat-panel-description>
+     </mat-expansion-panel-header>
+  
+      <div class="student-details">
+        <p><strong>Correo electrónico:</strong> {{ student.student.email }}</p>
+        <p><strong>Carrera:</strong> {{ student.student.licenciatura }}</p>
+  
+        <h4 style="color: #8B0000; margin-top: 10px;"><b>Ueas</b></h4>
+        <ul>
+          <li *ngFor="let grade of student.grades">
+            <strong>UEA: </strong>{{ grade.materia }} <br>
+            <strong>Calificación: </strong>{{ grade.calificacion }} <br>
+            <strong>Nota:</strong> {{ grade.nota }} <br> 
+            <strong>Profesor: </strong>{{ grade.profesor }} <br>
+            <strong>Trimestre</strong> {{ grade.trimestre }} <br><br>
+          </li>
+        </ul>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <mat-tab-group>
+    <br><br><br><br><mat-tab label="Estudiantes">
+      <div class="students-container">
+        <mat-card *ngFor="let item of studentsWithGrades" class="student-card">
+          <h3 style="color: #880E4F; margin-bottom: 8px;"><b>Datos del Estudiante</b></h3>
+          <p><strong>Nombre Completo:</strong> {{ item.student.nombre }} {{ item.student.apellidoP }} {{ item.student.apellidoM }}</p>
+          <p><strong>Matrícula:</strong> {{ item.student.matricula }}</p>
+          <p><strong>Correo:</strong> {{ item.student.email }}</p>
+          <p><strong>Licenciatura:</strong> {{ item.student.licenciatura }}</p>
+        </mat-card>
+      </div>
+    </mat-tab>
+  
+    <mat-tab label="Calificaciones">
+      <mat-accordion>
+        <mat-expansion-panel *ngFor="let item of studentsWithGrades">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{ item.student.apellidoP }} {{ item.student.apellidoM }} {{ item.student.nombre }} - {{ item.student.matricula }}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+  
+          <div *ngIf="item.grades.length > 0">
+            <ul>
+              <li *ngFor="let grade of item.grades">
+                <strong style="color: #1f0846;">UEA: </strong>{{ grade.materia }} <br>
+                <strong style="color: #1f0846">Calificación: </strong>{{ grade.calificacion }} <br>
+                <strong style="color: #1f0846;">Nota:</strong> {{ grade.nota }} <br> 
+                <strong style="color: #1f0846;">Profesor: </strong>{{ grade.profesor }} <br>
+                <strong style="color: #1f0846;">Trimestre</strong> {{ grade.trimestre }} <br><br>
+              </li>
+            </ul>
+          </div>
+          <p *ngIf="item.grades.length === 0">No tiene calificaciones registradas.</p>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-tab>
+  </mat-tab-group> <br><br><br>
+</div> 

@@ -1,0 +1,48 @@
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 30px;
+  background-color: #F5F5F5;
+}
+
+.student-card {
+  width: 320px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background-color: #f4f6f8;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.student-details {
+  font-size: 15px;
+  color: black;
+  padding: 10px;
+}
+mat-panel-title {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+mat-expansion-panel {
+  margin-bottom: 10px;
+  background-color: #fdfdfd;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+mat-panel-title {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+mat-panel-description {
+  font-size: 14px;
+  color: #666;
+}
